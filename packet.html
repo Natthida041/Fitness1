@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+  // ...existing code...
+  function switchLang(lang) {
+    const th = {
+      plansTitle: "แพ็กเกจสมาชิก",
+      packages: [
+        { id: "once", name: "รายครั้ง", price: "฿250", desc: ["เข้าใช้ฟิตเนส 1 ครั้ง", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" },
+        { id: "week", name: "รายอาทิตย์", price: "฿800", desc: ["เข้าใช้ฟิตเนสไม่จำกัด 7 วัน", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" },
+        { id: "month", name: "1 เดือน", price: "฿1,500", desc: ["เข้าใช้ฟิตเนสไม่จำกัด 1 เดือน", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" },
+        { id: "month3", name: "3 เดือน", price: "฿4,000", desc: ["เข้าใช้ฟิตเนสไม่จำกัด 3 เดือน", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" },
+        { id: "month6", name: "6 เดือน", price: "฿7,200", desc: ["เข้าใช้ฟิตเนสไม่จำกัด 6 เดือน", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" },
+        { id: "year", name: "1 ปี", price: "฿13,000", desc: ["เข้าใช้ฟิตเนสไม่จำกัด 1 ปี", "สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้"], btn: "สมัครเลย" }
+      ],
+      registerTitle: "สมัครสมาชิก",
+      regName: "ชื่อ",
+      regEmail: "อีเมล",
+      regPhone: "เบอร์โทรศัพท์",
+      regSlip: "แนบหลักฐานการโอน",
+      regSubmit: "ส่งข้อมูล",
+      regCancel: "ยกเลิก",
+      copyright: "สงวนลิขสิทธิ์."
+    };
+    const en = {
+      plansTitle: "Membership Packages",
+      packages: [
+        { id: "once", name: "Single Visit", price: "฿250", desc: ["1-time fitness access", "Join all classes and use all gym equipment"], btn: "Register" },
+        { id: "week", name: "Weekly", price: "฿800", desc: ["Unlimited fitness access for 7 days", "Join all classes and use all gym equipment"], btn: "Register" },
+        { id: "month", name: "1 Month", price: "฿1,500", desc: ["Unlimited fitness access for 1 month", "Join all classes and use all gym equipment"], btn: "Register" },
+        { id: "month3", name: "3 Months", price: "฿4,000", desc: ["Unlimited fitness access for 3 months", "Join all classes and use all gym equipment"], btn: "Register" },
+        { id: "month6", name: "6 Months", price: "฿7,200", desc: ["Unlimited fitness access for 6 months", "Join all classes and use all gym equipment"], btn: "Register" },
+        { id: "year", name: "1 Year", price: "฿13,000", desc: ["Unlimited fitness access for 1 year", "Join all classes and use all gym equipment"], btn: "Register" }
+      ],
+      registerTitle: "Register",
+      regName: "Name",
+      regEmail: "Email",
+      regPhone: "Phone Number",
+      regSlip: "Upload Payment Slip",
+      regSubmit: "Submit",
+      regCancel: "Cancel",
+      copyright: "All rights reserved."
+    };
+    const t = lang === 'en' ? en : th;
+
+    // Plans section
+    document.getElementById('plans-title').textContent = t.plansTitle;
+    const ids = ["once", "week", "month", "month3", "month6", "year"];
+    t.packages.forEach((pkg, i) => {
+      document.getElementById('reg-package-' + ids[i]).textContent = pkg.name;
+      document.getElementById('desc-' + ids[i]).innerHTML = pkg.desc.map(d => `<li>${d}</li>`).join('');
+      document.getElementById('btn-register-' + ids[i]).textContent = pkg.btn;
+    });
+
+    // Register modal
+    document.getElementById('register-title').textContent = t.registerTitle;
+    document.getElementById('reg-name-label').textContent = t.regName;
+    document.getElementById('reg-email-label').textContent = t.regEmail;
+    document.getElementById('reg-phone-label').textContent = t.regPhone;
+    document.getElementById('reg-slip-label').textContent = t.regSlip;
+    document.getElementById('reg-submit').textContent = t.regSubmit;
+    document.getElementById('reg-cancel').textContent = t.regCancel;
+
+    // Footer
+    document.getElementById('copyright').textContent = `© 2025 Get Well Fitness. ${t.copyright}`;
+    document.documentElement.lang = lang;
+  }
+
+  function updateNav(lang) {
+    const nav = {
+      th: {
+        packet: "แพ็กเกจ",
+        class: "คลาส",
+        why: "ทำไมต้อง Get Well Fitness",
+        trainer: "เทรนเนอร์ส่วนตัว"
+      },
+      en: {
+        packet: "Packages",
+        class: "Classes",
+        why: "Why Get Well Fitness",
+        trainer: "Personal Trainer"
+      }
+    };
+    const t = nav[lang];
+    document.getElementById('nav-packet').textContent = t.packet;
+    document.getElementById('nav-class').textContent = t.class;
+    document.getElementById('nav-why').textContent = t.why;
+    document.getElementById('nav-trainer').textContent = t.trainer;
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    switchLang('th');
+    updateNav('th');
+  });
+</script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-4">
+          <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+          <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+        </a>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class=""></a>
+        <a id="nav-packet" href="packet.html" class="px-4 py-2 rounded-full bg-accent text-primary font-bold shadow hover:bg-accentDark transition">แพ็กเกจ</a>
+        <a id="nav-class" href="class.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">คลาส</a>
+        <a id="nav-why" href="Why.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th'); updateNav('th');" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en'); updateNav('en');" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+  <script>
+    // ...existing code...
+    function updateNav(lang) {
+      const nav = {
+        th: {
+          packet: "แพ็กเกจ",
+          class: "คลาส",
+          why: "ทำไมต้อง Get Well Fitness",
+          trainer: "เทรนเนอร์ส่วนตัว"
+        },
+        en: {
+          packet: "Packages",
+          class: "Classes",
+          why: "Why Get Well Fitness",
+          trainer: "Personal Trainer"
+        }
+      };
+      const t = nav[lang];
+      document.getElementById('nav-packet').textContent = t.packet;
+      document.getElementById('nav-class').textContent = t.class;
+      document.getElementById('nav-why').textContent = t.why;
+      document.getElementById('nav-trainer').textContent = t.trainer;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLang('th');
+      updateNav('th');
+    });
+  </script>
+
+  <section id="plans" class="py-16 bg-gradient-to-br from-white via-accent/30 to-accent/10">
+    <div class="max-w-5xl mx-auto px-4">
+      <h3 id="plans-title" class="text-3xl font-bold text-center mb-8 text-primary">แพ็กเกจสมาชิก</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- รายครั้ง -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-primary hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-primary" id="reg-package-once">รายครั้ง</h4>
+          <p class="text-3xl font-bold text-accent mb-4">฿250</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-once">
+            <li>เข้าใช้ฟิตเนส 1 ครั้ง</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-once" onclick="document.getElementById('register-modal').showModal()" class="bg-primary hover:bg-green-900 text-accent font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+        <!-- รายอาทิตย์ -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-accentDark hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-accentDark" id="reg-package-week">รายอาทิตย์</h4>
+          <p class="text-3xl font-bold text-accentDark mb-4">฿800</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-week">
+            <li>เข้าใช้ฟิตเนสไม่จำกัด 7 วัน</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-week" onclick="document.getElementById('register-modal').showModal()" class="bg-accentDark hover:bg-accent text-white font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+        <!-- ราย 1 เดือน -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-primary hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-primary" id="reg-package-month">1 เดือน</h4>
+          <p class="text-3xl font-bold text-accent mb-4">฿1,500</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-month">
+            <li>เข้าใช้ฟิตเนสไม่จำกัด 1 เดือน</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-month" onclick="document.getElementById('register-modal').showModal()" class="bg-primary hover:bg-green-900 text-accent font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+        <!-- ราย 3 เดือน -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-accentDark hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-accentDark" id="reg-package-month3">3 เดือน</h4>
+          <p class="text-3xl font-bold text-accentDark mb-4">฿4,000</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-month3">
+            <li>เข้าใช้ฟิตเนสไม่จำกัด 3 เดือน</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-month3" onclick="document.getElementById('register-modal').showModal()" class="bg-accentDark hover:bg-accent text-white font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+        <!-- ราย 6 เดือน -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-primary hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-primary" id="reg-package-month6">6 เดือน</h4>
+          <p class="text-3xl font-bold text-accent mb-4">฿7,200</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-month6">
+            <li>เข้าใช้ฟิตเนสไม่จำกัด 6 เดือน</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-month6" onclick="document.getElementById('register-modal').showModal()" class="bg-primary hover:bg-green-900 text-accent font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+        <!-- ราย 1 ปี -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg text-center border-2 border-accentDark hover:scale-105 transition-transform">
+          <h4 class="font-bold mb-2 text-accentDark" id="reg-package-year">1 ปี</h4>
+          <p class="text-3xl font-bold text-accentDark mb-4">฿13,000</p>
+          <ul class="mb-4 text-gray-700 space-y-1" id="desc-year">
+            <li>เข้าใช้ฟิตเนสไม่จำกัด 1 ปี</li>
+            <li>สามารถเข้าร่วมคลาสและใช้อุปกรณ์ออกกำลังกายทั้งหมดในฟิตเนสได้</li>
+          </ul>
+          <button id="btn-register-year" onclick="document.getElementById('register-modal').showModal()" class="bg-accentDark hover:bg-accent text-white font-bold px-6 py-2 rounded-full shadow transition-colors">สมัครเลย</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- สมัครสมาชิก Modal -->
+  <dialog id="register-modal" class="rounded-lg w-full max-w-md p-0">
+    <form method="dialog" class="bg-white p-8 rounded-lg shadow space-y-4" enctype="multipart/form-data">
+      <h3 id="register-title" class="text-xl font-bold text-primary mb-4 text-center">สมัครสมาชิก</h3>
+      <div>
+        <label id="reg-name-label" class="block mb-1 font-semibold text-primary" for="reg-name">ชื่อ</label>
+        <input class="w-full p-2 rounded border border-primary focus:ring-2 focus:ring-accent" type="text" id="reg-name" name="reg-name" required />
+      </div>
+      <div>
+        <label id="reg-email-label" class="block mb-1 font-semibold text-primary" for="reg-email">อีเมล</label>
+        <input class="w-full p-2 rounded border border-primary focus:ring-2 focus:ring-accent" type="email" id="reg-email" name="reg-email" required />
+      </div>
+      <div>
+        <label id="reg-phone-label" class="block mb-1 font-semibold text-primary" for="reg-phone">เบอร์โทรศัพท์</label>
+        <input class="w-full p-2 rounded border border-primary focus:ring-2 focus:ring-accent" type="tel" id="reg-phone" name="reg-phone" required />
+      </div>
+      <div>
+        <label id="reg-slip-label" class="block mb-1 font-semibold text-primary" for="reg-slip">แนบหลักฐานการโอน</label>
+        <input class="w-full p-2 rounded border border-primary focus:ring-2 focus:ring-accent" type="file" id="reg-slip" name="reg-slip" accept="image/*" required />
+      </div>
+      <div class="flex justify-end space-x-2 pt-2">
+        <button id="reg-submit" type="submit" class="bg-primary hover:bg-green-900 text-accent font-bold px-6 py-2 rounded-full">ส่งข้อมูล</button>
+        <button id="reg-cancel" type="button" onclick="document.getElementById('register-modal').close()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full">ยกเลิก</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="bg-primary text-accent text-center py-4 mt-8">
+    <span id="copyright">&copy; 2025 Get Well Fitness. สงวนลิขสิทธิ์.</span>
+  </footer>
+  <script>
+    // ป้องกัน error ในเบราว์เซอร์ที่ไม่รองรับ <dialog>
+    if (typeof HTMLDialogElement === "undefined") {
+      document.getElementById('register-modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Well Fitness</title>
+  <style>
+    :root {
+      --primary: #166534;
+      --accent: #facc15;
+      --accent-dark: #eab308;
+      --bg: #f7f7f7;
+      --white: #fff;
+      --gray: #aaa;
+      --black: #111;
+      --nav-bg: #166534;
+      --nav-hover: #eab308;
+      --cta-bg: #facc15;
+      --cta-hover: #eab308;
+    }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:var(--bg);}
+    header { background:var(--primary); color:var(--white); padding:20px; text-align:center; }
+    header h1 { margin:0; font-size:2.2rem; }
+    header p { margin:5px 0 0; font-size:1rem; color:var(--accent); }
+    nav { background:var(--nav-bg); display:flex; justify-content:center; }
+    nav a { color:var(--white); text-decoration:none; padding:15px 20px; display:block; transition:background 0.2s, color 0.2s; border-radius: 0 0 8px 8px; }
+    nav a:hover { background:var(--accent); color:var(--primary);}
+    .hero { background:url('GRF-183.JPG') center/cover no-repeat; height:400px; display:flex; align-items:center; justify-content:center; color:var(--white); text-align:center; }
+    .hero h2 { font-size:2.5rem; background:rgba(22,101,52,0.7); padding:15px 25px; border-radius:8px; color:var(--accent);}
+    .section { padding:50px 20px; max-width:1100px; margin:auto; }
+    .section h2 { text-align:center; font-size:2rem; margin-bottom:30px; color:var(--primary);}
+    .classes { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .class-card { background:var(--white); border-radius:10px; padding:20px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.07); border:2px solid var(--accent);}
+    .class-card h3 { margin:10px 0; color:var(--primary);}
+    .class-card p { color:var(--primary);}
+    .cta { text-align:center; margin-top:40px; }
+    .cta a { background:var(--cta-bg); color:var(--primary); padding:15px 30px; border-radius:5px; text-decoration:none; font-size:1.2rem; font-weight:bold; transition:background 0.2s, color 0.2s;}
+    .cta a:hover { background:var(--cta-hover); color:var(--white);}
+    footer { background:var(--primary); color:var(--accent); text-align:center; padding:20px; margin-top:50px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Get Well Fitness</h1>
+    <p>สุขภาพดี เริ่มได้ที่นี่</p>
+  </header>
+  <nav>
+    <a href="#classes">คลาสเรียน</a>
+    <a href="#trainers">ทีมเทรนเนอร์</a>
+    <a href="#booking">จองคลาส</a>
+    <a href="#contact">ติดต่อเรา</a>
+  </nav>
+  <section class="hero">
+  </section>
+  
+  <section id="classes" class="section">
+    <h2>คลาสยอดนิยม</h2>
+    <div class="classes">
+      <div class="class-card">
+        <h3>Body Combat</h3>
+        <p>ออกกำลังกายแบบคาร์ดิโอพร้อมท่าต่อสู้ เผาผลาญพลังงานได้สูง</p>
+      </div>
+      <div class="class-card">
+        <h3>Zumba</h3>
+        <p>สนุกกับการเต้นสุดมันส์ เพิ่มความแข็งแรงและความสุข</p>
+      </div>
+      <div class="class-card">
+        <h3>Yoga Balance</h3>
+        <p>ยืดเหยียด เพิ่มความยืดหยุ่น พร้อมสร้างสมาธิและความสงบ</p>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="#booking">จองคลาสวันนี้</a>
+    </div>
+  </section>
+
+  <section id="trainers" class="section">
+    <h2>ทีมเทรนเนอร์</h2>
+    <p style="text-align:center; max-width:700px; margin:auto; color:var(--primary);">ทีมผู้ฝึกสอนมืออาชีพ ที่พร้อมช่วยคุณพัฒนาสุขภาพและร่างกายให้แข็งแรงยิ่งขึ้น ทั้งในด้านการออกกำลังกาย โภชนาการ และการสร้างแรงบันดาลใจ</p>
+  </section>
+
+  <section id="booking" class="section">
+    <h2>ระบบจองคลาส</h2>
+    <p style="text-align:center; color:var(--primary);">[พื้นที่สำหรับเชื่อมระบบจอง เช่น SimplyBook.me หรือ Bookeo]</p>
+    <div class="cta">
+      <a href="#">เข้าสู่หน้าจอง</a>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>ติดต่อเรา</h2>
+    <p style="text-align:center; color:var(--primary);">📍 123 ถนนสุขภาพดี เมืองฟิตเนส <br>📞 081-234-5678 <br>📧 info@getwellfitness.com</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Get Well Fitness - All Rights Reserved</p>
+  </footer>
+</body>
+</html>

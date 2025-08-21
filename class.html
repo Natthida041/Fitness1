@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    function switchLang(lang) {
+      const th = {
+        nav: {
+          packet: "แพ็กเกจ",
+          class: "คลาส",
+          why: "ทำไมต้อง Get Well Fitness",
+          trainer: "เทรนเนอร์ส่วนตัว"
+        },
+        scheduleTitle: "ตารางคลาสประจำเดือน",
+        scheduleNote: "* ตารางอาจมีการเปลี่ยนแปลง กรุณาตรวจสอบที่หน้าฟิตเนสอีกครั้ง",
+        days: ["เวลา", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์", "อาทิตย์"],
+        schedule: [
+          ["08:30 - 09:15", "Pilates Mat Kru Wit", "Weight Workout Kru Wit", "Dynamic stretching Kru Wit", "Full body Strength Kru Mee", "Aerobic Kru Praw", "Yoga Kru K (08:15 - 09:15)", "Core Body balance Kru Bus"],
+          ["09:30 - 10:45", "HIIT", "โยคะ", "-", "พิลาทิส", "-", "เวทเทรนนิ่ง", "-"],
+          ["18:00 - 19:00", "เวทเทรนนิ่ง", "คาร์ดิโอ", "HIIT", "โยคะ", "พิลาทิส", "-", "โยคะ"],
+        ],
+        copyright: "สงวนลิขสิทธิ์."
+      };
+      const en = {
+        nav: {
+          packet: "Packages",
+          class: "Classes",
+          why: "Why Get Well Fitness",
+          trainer: "Personal Trainer"
+        },
+        scheduleTitle: "Monthly class schedule",
+        scheduleNote: "* Schedule may change. Please check at the gym.",
+        days: ["Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        schedule: [
+          ["08:30 - 09:15", "Yoga", "-", "Pilates", "-", "Yoga", "-", "Cardio"],
+          ["09:30 - 10:45", "HIIT", "Yoga", "-", "Pilates", "-", "Weight Training", "-"],
+          ["18:00 - 19:00", "Weight Training", "Cardio", "HIIT", "Yoga", "Pilates", "-", "Yoga"],
+        ],
+        copyright: "All rights reserved."
+      };
+      const t = lang === 'en' ? en : th;
+
+      // Update nav
+      document.getElementById('nav-packet').textContent = t.nav.packet;
+      document.getElementById('nav-class').textContent = t.nav.class;
+      document.getElementById('nav-why').textContent = t.nav.why;
+      document.getElementById('nav-trainer').textContent = t.nav.trainer;
+
+      // Update class section
+      document.getElementById('class-title').textContent = t.scheduleTitle;
+      document.getElementById('class-note').textContent = t.scheduleNote;
+      document.getElementById('copyright').textContent = `© 2025 Get Well Fitness. ${t.copyright}`;
+      renderScheduleTable(t);
+      document.documentElement.lang = lang;
+    }
+
+    function renderScheduleTable(t) {
+      const thead = document.getElementById('class-thead');
+      const tbody = document.getElementById('class-tbody');
+      // Render header
+      thead.innerHTML = `<tr class="bg-accent text-primary">${t.days.map(day => `<th class="py-3 px-4">${day}</th>`).join('')}</tr>`;
+      // Render body
+      tbody.innerHTML = t.schedule.map(row =>
+        `<tr class="border-t">${row.map(cell => `<td class="py-2 px-4 font-semibold">${cell}</td>`).join('')}</tr>`
+      ).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLang('th');
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-4">
+          <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+          <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+        </a>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class=""></a>
+        <a id="nav-packet" href="packet.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">แพ็กเกจ</a>
+        <a id="nav-class" href="class.html" class="px-4 py-2 rounded-full bg-accent text-primary font-bold shadow hover:bg-accentDark transition">คลาส</a>
+        <a id="nav-why" href="Why.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th')" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en')" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="max-w-5xl mx-auto mt-10 mb-8 px-4">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <img src="GRF-13.JPG" alt="ฟิตเนส 1" class="rounded-lg shadow object-cover w-full h-48" />
+      <img src="GRF-116.JPG" alt="ฟิตเนส 2" class="rounded-lg shadow object-cover w-full h-48" />
+      <img src="GRF-826.JPG" alt="ฟิตเนส 3" class="rounded-lg shadow object-cover w-full h-48" />
+      <img src="GRF-935.JPG" alt="ฟิตเนส 4" class="rounded-lg shadow object-cover w-full h-48" />
+      <img src="GRF-174.JPG" alt="ฟิตเนส 5" class="rounded-lg shadow object-cover w-full h-48" />
+    </div>
+  </section>
+
+  <!-- Class Schedule Section -->
+  <section class="max-w-4xl mx-auto mt-10 bg-white rounded-xl shadow-lg p-8">
+    <h2 id="class-title" class="text-3xl font-bold text-primary mb-6 text-center">ตารางคลาสประจำเดือน สิงหาคม 2568</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-center border border-gray-200 rounded-lg">
+        <thead id="class-thead">
+          <tr class="bg-accent text-primary">
+            <th class="py-3 px-4">เวลา</th>
+            <th class="py-3 px-4">จันทร์</th>
+            <th class="py-3 px-4">อังคาร</th>
+            <th class="py-3 px-4">พุธ</th>
+            <th class="py-3 px-4">พฤหัส</th>
+            <th class="py-3 px-4">ศุกร์</th>
+            <th class="py-3 px-4">เสาร์</th>
+            <th class="py-3 px-4">อาทิตย์</th>
+          </tr>
+        </thead>
+        <tbody id="class-tbody">
+          <tr class="border-t">
+            <td class="py-2 px-4 font-semibold">08:30 - 09:15</td>
+            <td>โยคะ</td>
+            <td>-</td>
+            <td>พิลาทิส</td>
+            <td>-</td>
+            <td>โยคะ</td>
+            <td>-</td>
+            <td>คาร์ดิโอ</td>
+          </tr>
+          <tr class="border-t">
+            <td class="py-2 px-4 font-semibold">09:30 - 10:45</td>
+            <td>HIIT</td>
+            <td>โยคะ</td>
+            <td>-</td>
+            <td>พิลาทิส</td>
+            <td>-</td>
+            <td>เวทเทรนนิ่ง</td>
+            <td>-</td>
+          </tr>
+          <tr class="border-t">
+            <td class="py-2 px-4 font-semibold">18:00 - 19:00</td>
+            <td>เวทเทรนนิ่ง</td>
+            <td>คาร์ดิโอ</td>
+            <td>HIIT</td>
+            <td>โยคะ</td>
+            <td>พิลาทิส</td>
+            <td>-</td>
+            <td>โยคะ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p id="class-note" class="text-gray-500 text-sm mt-4 text-center">* ตารางอาจมีการเปลี่ยนแปลง กรุณาตรวจสอบที่หน้าฟิตเนสอีกครั้ง</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-inner mt-10">
+    <div class="max-w-6xl mx-auto py-4 px-6 border-t">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-center md:text-left">
+          <p id="copyright" class="text-gray-500 text-sm"></p>
+        </div>
+        <div class="flex space-x-4 mt-2 md:mt-0">
+          <a href="https://www.facebook.com/FitnessAonang" target="_blank" class="text-gray-500 hover:text-primary transition">
+            <img src="https://img.icons8.com/ios-filled/24/166534/facebook-new.png" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="text-gray-500 hover:text-primary transition">
+            <img src="https://img.icons8.com/ios-filled/24/166534/instagram-new.png" alt="Instagram" />
+          </a>
+          <a href="https://line.me/R/ti/p/%40getwellfitness" target="_blank" class="text-gray-500 hover:text-primary transition">
+            <img src="https://img.icons8.com/ios-filled/24/166534/line-me.png" alt="Line" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

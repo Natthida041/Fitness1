@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hero {
+      background: url('GRF-183.JPG') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    function switchLang(lang) {
+      const th = {
+        facilities: "สิ่งอำนวยความสะดวกของเรา",
+        items: [
+          { key: "building", title: "อาคารฟิตเนส/ลานจอดรถ", desc: "อาคารทันสมัย สะอาด ปลอดภัย", icon: "https://img.icons8.com/ios-filled/60/166534/building.png" },
+          { key: "parking", title: "โปรโมชันและราคา", desc: "ดูโปรโมชั่นและแพ็กเกจราคาพิเศษ", icon: "https://img.icons8.com/ios-filled/60/facc15/parking.png" },
+          { key: "reception", title: "แผนกต้อนรับ", desc: "บริการด้วยรอยยิ้ม พร้อมให้คำแนะนำ", icon: "https://img.icons8.com/ios-filled/60/166534/customer-support.png" },
+          { key: "gym", title: "ห้องออกกำลังกาย", desc: "อุปกรณ์ครบครัน ทันสมัย", icon: "https://img.icons8.com/ios-filled/60/facc15/dumbbell.png" },
+          { key: "classroom", title: "ห้องคลาส", desc: "รองรับคลาสโยคะ พิลาทิส และอื่นๆ", icon: "https://img.icons8.com/ios-filled/60/166534/classroom.png" },
+          { key: "cardio", title: "ห้องคาร์ดิโอ", desc: "เครื่องคาร์ดิโอคุณภาพสูง", icon: "https://img.icons8.com/ios-filled/60/facc15/heart-with-pulse.png" }
+        ],
+        tel: "โทร:",
+        email: "อีเมล:",
+        address: "ที่อยู่:",
+        addressDetail: "1177 หมู่2 ต.อ่าวนาง อ.เมือง จ.กระบี่ 81180",
+        copyright: "สงวนลิขสิทธิ์."
+      };
+      const en = {
+        facilities: "Our Facilities",
+        items: [
+          { key: "building", title: "Fitness Building/Parking", desc: "Modern, clean, and safe building", icon: "https://img.icons8.com/ios-filled/60/166534/building.png" },
+          { key: "parking", title: "Promotions & Pricing", desc: "See special promotions and packages", icon: "https://img.icons8.com/ios-filled/60/facc15/parking.png" },
+          { key: "reception", title: "Reception", desc: "Friendly service and guidance", icon: "https://img.icons8.com/ios-filled/60/166534/customer-support.png" },
+          { key: "gym", title: "Gym Room", desc: "Fully equipped and modern", icon: "https://img.icons8.com/ios-filled/60/facc15/dumbbell.png" },
+          { key: "classroom", title: "Classroom", desc: "Yoga, Pilates, and more", icon: "https://img.icons8.com/ios-filled/60/166534/classroom.png" },
+          { key: "cardio", title: "Cardio Room", desc: "High quality cardio machines", icon: "https://img.icons8.com/ios-filled/60/facc15/heart-with-pulse.png" }
+        ],
+        tel: "Tel:",
+        email: "Email:",
+        address: "Address:",
+        addressDetail: "1177 Moo 2, Ao Nang, Mueang, Krabi 81180",
+        copyright: "All rights reserved."
+      };
+      const t = lang === 'en' ? en : th;
+      window.facilityData = t;
+      document.getElementById('facilities-title').textContent = t.facilities;
+      document.getElementById('contact-tel-label').textContent = t.tel;
+      document.getElementById('contact-email-label').textContent = t.email;
+      document.getElementById('contact-address-label').textContent = t.address;
+      document.getElementById('contact-address-detail').textContent = t.addressDetail;
+      document.getElementById('copyright').textContent = `© 2025 Get Well Fitness. ${t.copyright}`;
+      renderFacilityDropdown();
+      document.documentElement.lang = lang;
+    }
+
+    function renderFacilityDropdown(selectedKey) {
+      const data = window.facilityData;
+      const dropdown = document.getElementById('facility-dropdown');
+      const content = document.getElementById('facility-content');
+      dropdown.innerHTML = '';
+      let selected = selectedKey || data.items[0].key;
+
+      // Create select element
+      const select = document.createElement('select');
+      select.className = "w-full md:w-96 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:outline-none text-lg";
+      data.items.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.key;
+        option.textContent = item.title;
+        if (selected === item.key) option.selected = true;
+        select.appendChild(option);
+      });
+      select.onchange = (e) => renderFacilityDropdown(e.target.value);
+      dropdown.appendChild(select);
+
+      // Show content
+      const item = data.items.find(i => i.key === selected);
+      content.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full">
+          <img src="${item.icon}" class="w-20 h-20 mb-6" alt="">
+          <h4 class="text-2xl font-bold text-primary mb-2">${item.title}</h4>
+          <p class="text-gray-600 text-lg">${item.desc}</p>
+        </div>
+      `;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLang('th');
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-4">
+          <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+          <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+        </a>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class=""></a>
+        <a id="nav-home" href="packet.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">แพ็กเกจ</a>
+        <a id="nav-plans" href="class.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">คลาส</a>
+        <a id="nav-Why" href="Why.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th')" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en')" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <img src="GRF-174.JPG" alt="Hero" style="width:100%; height:400px; object-fit:cover; object-position:center; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);" />
+  </section>
+
+  <!-- Facilities Section -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 id="facilities-title" class="text-3xl md:text-4xl font-extrabold text-primary mb-4"></h2>
+      </div>
+      <div id="facility-dropdown" class="mb-8"></div>
+      <div id="facility-content" class="bg-white rounded-lg shadow p-6 text-center"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4">ติดต่อเรา</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-4">ที่อยู่</h3>
+          <p id="contact-address-detail" class="text-gray-700 mb-4"></p>
+          <a href="https://www.google.com/maps?q=1177+Moo+2,+Ao+Nang,+Mueang,+Krabi+81180" target="_blank" class="text-accent hover:underline">ดูแผนที่บน Google Maps</a>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-4">โทรศัพท์</h3>
+          <p id="contact-tel-label" class="text-gray-700 mb-4"></p>
+          <a href="tel:" class="text-accent hover:underline"></a>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-4">อีเมล</h3>
+          <p id="contact-email-label" class="text-gray-700 mb-4"></p>
+          <a href="mailto:" class="text-accent hover:underline"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p id="copyright" class="text-white text-sm"></p>
+    </div>
+  </footer>
+</body>
+</html>

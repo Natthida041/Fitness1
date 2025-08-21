@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    function switchLang(lang) {
+      const th = {
+        title: "เทรนเนอร์ส่วนตัว",
+        desc: "พบกับทีมเทรนเนอร์มืออาชีพของเรา พร้อมดูแลและให้คำแนะนำอย่างใกล้ชิด เพื่อเป้าหมายสุขภาพที่ดีที่สุดของคุณ",
+        trainers: [
+          {
+            name: "เทรนเนอร์วิท",
+            role: "นายวิสิฐ ภูทอง",
+            desc: "ประสบการณ์กว่า 3 ปี เน้นสร้างกล้ามเนื้อและลดไขมัน",
+            btn: "ติดต่อเทรนเนอร์"
+          },
+          {
+            name: "เทรนเนอร์มี้",
+            role: "นายภานุพงศ์ หวังใบ",
+            desc: "ดูแลใส่ใจทุกเป้าหมาย",
+            btn: "ติดต่อเทรนเนอร์"
+          },
+          {
+            name: "เทรนเนอร์บัส",
+            role: "นายธิเบศ เวชศาสตร์",
+            desc: "เน้นการออกกำลังกายแบบเผาผลาญไขมันและความแข็งแรงหัวใจ",
+            btn: "ติดต่อเทรนเนอร์"
+          },
+          {
+            name: "เทรนเนอร์พราว",
+            role: "นางสาวจิราภรณ์ สายนุ้ย",
+            desc: "เน้นการออกกำลังกายแบบเผาผลาญไขมันและความแข็งแรงหัวใจ",
+            btn: "ติดต่อเทรนเนอร์"
+          }
+        ]
+      };
+      const en = {
+        title: "Personal Trainer",
+        desc: "Meet our professional trainers, ready to guide you closely for your best health goals.",
+        trainers: [
+          {
+            name: "Trainer WIT",
+            role: "Wisit Phuthong",
+            desc: "Over 3 years experience, focused on muscle building and fat loss.",
+            btn: "Contact Trainer"
+          },
+          {
+            name: "Trainer MEE",
+            role: "Phanupong Wangbai",
+            desc: "Caring for every fitness goal.",
+            btn: "Contact Trainer"
+          },
+          {
+            name: "Trainer BAS",
+            role: "Thibet Wetchasat",
+            desc: "Focus on fat burning and heart strength workouts.",
+            btn: "Contact Trainer"
+          },
+          {
+            name: "Trainer Peaw",
+            role: "Jiraphorn Sainui",
+            desc: "Focus on fat burning and heart strength workouts.",
+            btn: "Contact Trainer"
+          }
+        ]
+      };
+      const t = lang === 'en' ? en : th;
+      document.getElementById('trainer-title').textContent = t.title;
+      document.getElementById('trainer-desc').textContent = t.desc;
+      // Trainers
+      const trainerEls = document.querySelectorAll('.trainer-card');
+      t.trainers.forEach((trainer, i) => {
+        trainerEls[i].querySelector('.trainer-name').textContent = trainer.name;
+        trainerEls[i].querySelector('.trainer-role').textContent = trainer.role;
+        trainerEls[i].querySelector('.trainer-desc').textContent = trainer.desc;
+        trainerEls[i].querySelector('.trainer-btn').textContent = trainer.btn;
+      });
+      document.documentElement.lang = lang;
+    }
+    function updateNav(lang) {
+      const nav = {
+        th: {
+          packet: "แพ็กเกจ",
+          class: "คลาส",
+          why: "ทำไมต้อง Get Well Fitness",
+          trainer: "เทรนเนอร์ส่วนตัว"
+        },
+        en: {
+          packet: "Packages",
+          class: "Classes",
+          why: "Why Get Well Fitness",
+          trainer: "Personal Trainer"
+        }
+      };
+      const t = nav[lang];
+      document.getElementById('nav-packet').textContent = t.packet;
+      document.getElementById('nav-class').textContent = t.class;
+      document.getElementById('nav-why').textContent = t.why;
+      document.getElementById('nav-trainer').textContent = t.trainer;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLang('th');
+      updateNav('th');
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-4">
+          <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+          <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+        </a>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class=""></a>
+        <a id="nav-packet" href="packet.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">แพ็กเกจ</a>
+        <a id="nav-class" href="class.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">คลาส</a>
+        <a id="nav-why" href="Why.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full bg-accent text-primary font-bold shadow hover:bg-accentDark transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th'); updateNav('th');" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en'); updateNav('en');" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Trainer Section -->
+  <section class="py-16 bg-gradient-to-b from-white to-green-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 id="trainer-title" class="text-3xl md:text-4xl font-extrabold text-primary text-center mb-4">เทรนเนอร์ส่วนตัว</h2>
+      <p id="trainer-desc" class="text-lg text-gray-700 text-center mb-10">
+        พบกับทีมเทรนเนอร์มืออาชีพของเรา พร้อมดูแลและให้คำแนะนำอย่างใกล้ชิด เพื่อเป้าหมายสุขภาพที่ดีที่สุดของคุณ
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Trainer 1 -->
+        <div class="trainer-card bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="C:\Users\acer\Documents\fitness\39547.jpg" alt="โค้ชวิทย์" class="w-28 h-28 rounded-full shadow mb-4 object-cover border-4 border-accent">
+          <h3 class="trainer-name text-xl font-bold text-primary mb-1">Trainer WIT</h3>
+          <div class="trainer-role text-accent font-semibold mb-2">นายวิสิฐ ภู่ทอง</div>
+          <p class="trainer-desc text-gray-600 text-center mb-4">ประสบการณ์กว่า 3 ปี เน้นสร้างกล้ามเนื้อและลดไขมัน</p>
+          <a href="tel:0999999999" class="trainer-btn px-4 py-2 bg-accent text-primary rounded-full font-bold shadow hover:bg-accentDark transition">ติดต่อเทรนเนอร์</a>
+        </div>
+        <!-- Trainer 2 -->
+        <div class="trainer-card bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="GRF-479.JPG" alt="โค้ชมี้" class="w-28 h-28 rounded-full shadow mb-4 object-cover border-4 border-accent">
+          <h3 class="trainer-name text-xl font-bold text-primary mb-1">Trainer MEE</h3>
+          <div class="trainer-role text-accent font-semibold mb-2">นายภานุพงศ์ หวังใบ</div>
+          <p class="trainer-desc text-gray-600 text-center mb-4">ดูแลใส่ใจทุกเป้าหมาย</p>
+          <a href="tel:0999999999" class="trainer-btn px-4 py-2 bg-accent text-primary rounded-full font-bold shadow hover:bg-accentDark transition">ติดต่อเทรนเนอร์</a>
+        </div>
+        <!-- Trainer 3 -->
+        <div class="trainer-card bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="GRF-459.JPG" alt="โค้ชบัส" class="w-28 h-28 rounded-full shadow mb-4 object-cover border-4 border-accent">
+          <h3 class="trainer-name text-xl font-bold text-primary mb-1">Trainer BAS</h3>
+          <div class="trainer-role text-accent font-semibold mb-2">นายธิเบศ เวชศาสตร์</div>
+          <p class="trainer-desc text-gray-600 text-center mb-4">เน้นการออกกำลังกายแบบเผาผลาญไขมันและความแข็งแรงหัวใจ</p>
+          <a href="tel:0999999999" class="trainer-btn px-4 py-2 bg-accent text-primary rounded-full font-bold shadow hover:bg-accentDark transition">ติดต่อเทรนเนอร์</a>
+        </div>
+    <!-- Trainer 4 -->
+        <div class="trainer-card bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
+          <img src="GRF-439.JPG" alt="โค้ชพราว" class="w-28 h-28 rounded-full shadow mb-4 object-cover border-4 border-accent">
+          <h3 class="trainer-name text-xl font-bold text-primary mb-1">Trainer Praw</h3>
+          <div class="trainer-role text-accent font-semibold mb-2">นางสาวจิราภรณ์ สายนุ้ย</div>
+          <p class="trainer-desc text-gray-600 text-center mb-4">เน้นการออกกำลังกายแบบเผาผลาญไขมันและความแข็งแรงหัวใจ</p>
+          <a href="tel:0999999999" class="trainer-btn px-4 py-2 bg-accent text-primary rounded-full font-bold shadow hover:bg-accentDark transition">ติดต่อเทรนเนอร์</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <span class="font-bold">Get Well Fitness</span>
+      </div>
+      <div class="text-sm">&copy; 2025 Get Well Fitness.</div>
+    </div>
+  </footer>
+</body>
+</html>

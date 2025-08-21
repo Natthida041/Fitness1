@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    function switchLang(lang) {
+      const th = {
+        nav: {
+          packet: "แพ็กเกจ",
+          class: "คลาส",
+          why: "ทำไมต้อง Get Well Fitness",
+          trainer: "เทรนเนอร์ส่วนตัว"
+        },
+      };
+      const en = {
+        nav: {
+          packet: "Packages",
+          class: "Classes",
+          why: "Why Get Well Fitness",
+          trainer: "Personal Trainer"
+        },
+      };
+      const t = lang === 'en' ? en : th;
+      document.getElementById('nav-packet').textContent = t.nav.packet;
+      document.getElementById('nav-class').textContent = t.nav.class;
+      document.getElementById('nav-why').textContent = t.nav.why;
+      document.getElementById('nav-trainer').textContent = t.nav.trainer;
+      document.getElementById('facilities-title').textContent = t.facilities;
+      document.getElementById('privacy-link').textContent = t.privacy;
+      document.getElementById('terms-link').textContent = t.terms;
+      document.getElementById('copyright').textContent = `© 2025 Get Well Fitness. ${t.copyright}`;
+      document.documentElement.lang = lang;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLang('th');
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-4">
+          <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+          <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+        </a>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class=""></a>
+        <a id="nav-packet" href="packet.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">แพ็กเกจ</a>
+        <a id="nav-class" href="class.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">คลาส</a>
+        <a id="nav-why" href="Why.html" class="px-4 py-2 rounded-full bg-accent text-primary font-bold shadow hover:bg-accentDark transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th')" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en')" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Facilities Section -->
+  <main class="py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 id="facilities-title" class="text-3xl font-extrabold text-center text-primary mb-8"></h2>
+      <!-- เนื้อหาหลัก -->
+    </div>
+  </main>
+
+</body>
+</html>
