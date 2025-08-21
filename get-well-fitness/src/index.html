@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Well Fitness</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            accent: '#facc15',
+            accentDark: '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="scripts/main.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Hero Section -->
+  <header class="bg-gradient-to-r from-primary to-green-700 shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8">
+      <div class="flex items-center space-x-4">
+        <img src="image.png" alt="logo" class="w-12 h-12 rounded-full shadow-lg bg-white p-1" />
+        <h1 class="text-4xl font-extrabold text-white tracking-tight drop-shadow">Get Well Fitness</h1>
+      </div>
+      <nav class="mt-6 md:mt-0 flex items-center space-x-2">
+        <a id="nav-home" href="index.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">หน้าหลัก</a>
+        <a id="nav-plans" href="plans.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">แพ็กเกจ</a>
+        <a id="nav-Why" href="Why.html" class="px-4 py-2 rounded-full text-white hover:bg-accent hover:text-primary font-bold transition">ทำไมต้อง Get Well Fitness</a>
+        <a id="nav-trainer" href="trainer.html" class="px-4 py-2 rounded-full bg-accent text-primary font-bold shadow hover:bg-accentDark transition">เทรนเนอร์ส่วนตัว</a>
+        <button onclick="switchLang('th')" class="ml-4 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">TH</button>
+        <button onclick="switchLang('en')" class="ml-2 px-3 py-1 rounded-full text-primary bg-accent font-bold hover:bg-accentDark transition">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Facilities Section -->
+  <main class="max-w-6xl mx-auto px-6 py-8">
+    <h2 id="facilities-title" class="text-3xl font-bold text-primary mb-6"></h2>
+    <div id="facility-dropdown" class="mb-6"></div>
+    <div id="facility-content" class="border rounded-lg p-6 bg-white shadow-md"></div>
+  </main>
+
+  <!-- Contact Section -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div>
+          <span id="contact-tel-label"></span> <span id="contact-tel"></span><br />
+          <span id="contact-email-label"></span> <span id="contact-email"></span><br />
+          <span id="contact-address-label"></span> <span id="contact-address-detail"></span>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <p id="copyright"></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
